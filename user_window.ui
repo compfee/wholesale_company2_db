@@ -1,0 +1,1838 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1576</width>
+    <height>1115</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>450</width>
+    <height>500</height>
+   </size>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget_count1">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>0</y>
+      <width>1556</width>
+      <height>1061</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>2</number>
+    </property>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Личный кабинет</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>811</width>
+        <height>621</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Verdana</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Verdana</family>
+           <pointsize>16</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Личный кабинет исполнителя</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="2" column="1" colspan="2">
+          <widget class="QLabel" name="country_label_2">
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_12">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Verdana</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Дата рождения</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" colspan="2">
+          <widget class="QLabel" name="name_label_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Verdana</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_13">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Verdana</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>E-mail</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1" colspan="2">
+          <widget class="QLabel" name="date_of_birth_label_2">
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_14">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Verdana</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Имя</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QPushButton" name="change_login_button_2">
+           <property name="text">
+            <string>Изменить логин</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_15">
+           <property name="text">
+            <string>Страна</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_16">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Verdana</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Логин</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1" colspan="2">
+          <widget class="QLabel" name="email_label_2">
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLineEdit" name="login_lineEdit_2"/>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_17">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Verdana</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Пароль</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLineEdit" name="password_lineEdit_2"/>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_18">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Verdana</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Повторите пароль</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLineEdit" name="password_confirm_lineEdit_2"/>
+         </item>
+         <item row="6" column="2">
+          <widget class="QPushButton" name="change_password_button_3">
+           <property name="text">
+            <string>Изменить пароль</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="exit_button_2">
+           <property name="text">
+            <string>Выйти</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Добавить товар</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget_21">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>405</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_27">
+       <item>
+        <widget class="QLabel" name="label_19">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Название</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_22">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>450</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_28">
+       <item>
+        <widget class="QLabel" name="label_25">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Склад1</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_23">
+      <property name="geometry">
+       <rect>
+        <x>155</x>
+        <y>405</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_29">
+       <item>
+        <widget class="QLineEdit" name="good_name_lineEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_24">
+      <property name="geometry">
+       <rect>
+        <x>295</x>
+        <y>405</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_30">
+       <item>
+        <widget class="QPushButton" name="add_button">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Добавить</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_25">
+      <property name="geometry">
+       <rect>
+        <x>295</x>
+        <y>450</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_31">
+       <item>
+        <widget class="QPushButton" name="delete_button">
+         <property name="text">
+          <string>Удалить</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_26">
+      <property name="geometry">
+       <rect>
+        <x>155</x>
+        <y>490</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_32">
+       <item>
+        <widget class="QLineEdit" name="w2_lineEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_27">
+      <property name="geometry">
+       <rect>
+        <x>295</x>
+        <y>490</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_33">
+       <item>
+        <widget class="QPushButton" name="change_button">
+         <property name="text">
+          <string>Изменить</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_28">
+      <property name="geometry">
+       <rect>
+        <x>155</x>
+        <y>450</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_34">
+       <item>
+        <widget class="QLineEdit" name="w1_lineEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_29">
+      <property name="geometry">
+       <rect>
+        <x>155</x>
+        <y>530</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_35">
+       <item>
+        <widget class="QLineEdit" name="priority_lineEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_30">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>575</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_36">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>id</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_31">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>490</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_37">
+       <item>
+        <widget class="QLabel" name="label_24">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Склад2</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_32">
+      <property name="geometry">
+       <rect>
+        <x>295</x>
+        <y>535</y>
+        <width>281</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_38">
+       <item>
+        <widget class="QPushButton" name="sort_button_name_prior">
+         <property name="text">
+          <string>Сортировка по наименованию и приоритету</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_33">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>530</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_39">
+       <item>
+        <widget class="QLabel" name="label_20">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Приоритет</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_34">
+      <property name="geometry">
+       <rect>
+        <x>155</x>
+        <y>575</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_40">
+       <item>
+        <widget class="QLineEdit" name="id_lineEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>660</y>
+        <width>656</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Вывести наименования на товары, отсутствующие на «складе 1»</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_35">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>690</y>
+        <width>235</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_41">
+       <item>
+        <widget class="QPushButton" name="not_on_w1_button">
+         <property name="text">
+          <string>Вывести</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_36">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>5</y>
+        <width>941</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_42">
+       <item>
+        <widget class="QTableWidget" name="catalogue_tableWidget_2">
+         <column>
+          <property name="text">
+           <string>id</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Наименование</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Склад1</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Склад2</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Приоритет</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Для перевоза</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string/>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_41">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>780</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_47">
+       <item>
+        <widget class="QPushButton" name="top5_button">
+         <property name="text">
+          <string>Показать</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_40">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>735</y>
+        <width>596</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Пять самых популярных товаров за заданный промежуток времени,
+упорядочив в порядке уменьшения спроса</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>575</x>
+        <y>405</y>
+        <width>271</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_48">
+       <item>
+        <widget class="QDateEdit" name="dateEdit_count1_3"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_42">
+      <property name="geometry">
+       <rect>
+        <x>575</x>
+        <y>455</y>
+        <width>271</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_49">
+       <item>
+        <widget class="QDateEdit" name="dateEdit_count1_4"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_41">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>415</y>
+        <width>47</width>
+        <height>14</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>C</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_42">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>465</y>
+        <width>47</width>
+        <height>14</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>По</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>545</y>
+        <width>416</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Лимит на размещение на складах = 1000</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_15">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>850</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_21">
+       <item>
+        <widget class="QPushButton" name="delete_goods_without_sales">
+         <property name="text">
+          <string>Удалить</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>825</y>
+        <width>476</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Удалить товары, не имеющие заявок</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_23">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>895</y>
+        <width>476</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Удалить товар и заявки на него</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_17">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>915</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_23">
+       <item>
+        <widget class="QPushButton" name="delete_good_and_its_sales">
+         <property name="text">
+          <string>Удалить</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_27">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>625</y>
+        <width>471</width>
+        <height>56</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Удалить в рамках транзакции товар со «склада 1» с наименьшим
+приоритетом</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_18">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>675</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_24">
+       <item>
+        <widget class="QPushButton" name="delete_good_with_min_prior">
+         <property name="text">
+          <string>Удалить</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>725</y>
+        <width>466</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Списать 5 единиц заданного товара со «склада 1»</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_19">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>795</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_25">
+       <item>
+        <widget class="QPushButton" name="delete_5_goods_button">
+         <property name="text">
+          <string>Списать</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_43">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>795</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_50">
+       <item>
+        <widget class="QLineEdit" name="delete_5_goods_lineEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_29">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>745</y>
+        <width>331</width>
+        <height>46</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Если количество товара
+на этом складе меньше 5, не достающее число списать со второго склада</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_33">
+      <property name="geometry">
+       <rect>
+        <x>545</x>
+        <y>835</y>
+        <width>421</width>
+        <height>46</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Создать представление, отображающее все товары, число которых на складе1
+менее некоторого числа</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_46">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>875</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_53">
+       <item>
+        <widget class="QPushButton" name="create_view_button">
+         <property name="text">
+          <string>Создать</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_47">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>875</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_54">
+       <item>
+        <widget class="QLineEdit" name="view_lineEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_34">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>10</y>
+        <width>486</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Создать представление, отображающее 5 самых популярных товаров за заданный
+месяц</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_9">
+      <property name="geometry">
+       <rect>
+        <x>955</x>
+        <y>65</y>
+        <width>271</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_55">
+       <item>
+        <widget class="QDateEdit" name="dateEdit_view"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_48">
+      <property name="geometry">
+       <rect>
+        <x>1235</x>
+        <y>65</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_56">
+       <item>
+        <widget class="QPushButton" name="create_view_button_2">
+         <property name="text">
+          <string>Создать</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_35">
+      <property name="geometry">
+       <rect>
+        <x>955</x>
+        <y>110</y>
+        <width>531</width>
+        <height>46</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Создать хранимую процедуру, выводящую список товаров для перевоза и
+его количество согласно текущему состоянию приоритетов</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_49">
+      <property name="geometry">
+       <rect>
+        <x>1235</x>
+        <y>155</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_57">
+       <item>
+        <widget class="QPushButton" name="create_xp1_button">
+         <property name="text">
+          <string>Вывести</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_36">
+      <property name="geometry">
+       <rect>
+        <x>965</x>
+        <y>195</y>
+        <width>391</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Создать хранимую процедуру с параметром количество перевозимого
+товара за ближайший рейс и выводящую все товары, которые необходимо
+привезти, и их количество</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_50">
+      <property name="geometry">
+       <rect>
+        <x>1235</x>
+        <y>245</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_58">
+       <item>
+        <widget class="QPushButton" name="create_xp2_button">
+         <property name="text">
+          <string>Вывести</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_51">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>250</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_59">
+       <item>
+        <widget class="QLineEdit" name="delivery_lineEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_37">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>295</y>
+        <width>386</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Создать хранимую процедуру, имеющую два параметра «товар1» и
+«товар2». Она должна возвращать даты, спрос в которые на «товар1» был
+больше чем на «товар2». Если в какой-либо день один из товаров не
+продавался, такой день не рассматривается</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_52">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>370</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_60">
+       <item>
+        <widget class="QLineEdit" name="id1_lineEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_53">
+      <property name="geometry">
+       <rect>
+        <x>1095</x>
+        <y>370</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_61">
+       <item>
+        <widget class="QLineEdit" name="id2_lineEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_54">
+      <property name="geometry">
+       <rect>
+        <x>1230</x>
+        <y>370</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_62">
+       <item>
+        <widget class="QPushButton" name="create_xp3_button">
+         <property name="text">
+          <string>Вывести</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_55">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>415</y>
+        <width>266</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_63">
+       <item>
+        <widget class="QTableWidget" name="dates_tableWidget">
+         <column>
+          <property name="text">
+           <string>Даты</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_38">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>610</y>
+        <width>516</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Создать хранимую процедуру с входными параметрами, задающими
+интервал времени, и выходным – идентификатором товара. Процедура
+должна возвращать товар с максимальным приростом спроса</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_56">
+      <property name="geometry">
+       <rect>
+        <x>1230</x>
+        <y>680</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_64">
+       <item>
+        <widget class="QPushButton" name="create_xp4_button">
+         <property name="text">
+          <string>Вывести</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_57">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>795</y>
+        <width>111</width>
+        <height>226</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_65">
+       <item>
+        <widget class="QTableWidget" name="dates_tableWidget_2">
+         <column>
+          <property name="text">
+           <string>id</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_39">
+      <property name="geometry">
+       <rect>
+        <x>955</x>
+        <y>720</y>
+        <width>501</width>
+        <height>86</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Создать хранимую процедуру с входными параметрами, задающими
+интервал времени, и выходным параметром – товар, с минимальным числом
+продаж за заданный период времени.</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_58">
+      <property name="geometry">
+       <rect>
+        <x>1225</x>
+        <y>800</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_66">
+       <item>
+        <widget class="QPushButton" name="create_xp5_button">
+         <property name="text">
+          <string>Вывести</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Заявки</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget_7">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1006</width>
+        <height>416</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <widget class="QTableWidget" name="sales_catalogue_tableWidget">
+         <column>
+          <property name="text">
+           <string>id</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Наименование</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>id товара</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Количество</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Приоритет</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Дата</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string/>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>500</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_10">
+       <item>
+        <widget class="QPushButton" name="count1_button">
+         <property name="text">
+          <string>Посчитать</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>430</y>
+        <width>271</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_12">
+       <item>
+        <widget class="QDateEdit" name="dateEdit_count1"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>755</x>
+        <y>435</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_13">
+       <item>
+        <widget class="QLabel" name="label_count1">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>635</x>
+        <y>435</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Результат:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>480</y>
+        <width>446</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Посчитать количество товаров в заявках за заданную дату</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>555</y>
+        <width>511</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Вывести все заявки на товары с приоритетом меньше заданного</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_8">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>580</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_14">
+       <item>
+        <widget class="QLineEdit" name="lineEdit_prior"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_10">
+      <property name="geometry">
+       <rect>
+        <x>145</x>
+        <y>580</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_16">
+       <item>
+        <widget class="QPushButton" name="under_prior_button">
+         <property name="text">
+          <string>Вывести</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>625</y>
+        <width>446</width>
+        <height>46</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Вывести заявки и наименования товаров, включая товары, на которые не
+было заявок</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_37">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>665</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_43">
+       <item>
+        <widget class="QPushButton" name="all_sales_button">
+         <property name="text">
+          <string>Вывести</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>715</y>
+        <width>501</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Вывести количество товаров, на которые не было заявок за заданную дату</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_38">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>740</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_44">
+       <item>
+        <widget class="QPushButton" name="sales_not_on_date_button">
+         <property name="text">
+          <string>Вывести</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_39">
+      <property name="geometry">
+       <rect>
+        <x>145</x>
+        <y>810</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_45">
+       <item>
+        <widget class="QPushButton" name="sum_w1_w2_button">
+         <property name="text">
+          <string>Вывести</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_40">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>805</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_46">
+       <item>
+        <widget class="QLineEdit" name="lineEdit_sum_w1_w2"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_26">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>785</y>
+        <width>616</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Вывести суммарное количество заданного товара на первом и втором складах.</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>460</y>
+        <width>336</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string> Добавить заявку на товар</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_11">
+      <property name="geometry">
+       <rect>
+        <x>755</x>
+        <y>475</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_17">
+       <item>
+        <widget class="QLineEdit" name="lineEdit_id"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_12">
+      <property name="geometry">
+       <rect>
+        <x>755</x>
+        <y>525</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_18">
+       <item>
+        <widget class="QLineEdit" name="lineEdit_count"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>625</x>
+        <y>490</y>
+        <width>47</width>
+        <height>14</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>id товара</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>535</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Количество товара</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_13">
+      <property name="geometry">
+       <rect>
+        <x>755</x>
+        <y>575</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_19">
+       <item>
+        <widget class="QPushButton" name="add_sale_button">
+         <property name="text">
+          <string>Добавить</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_14">
+      <property name="geometry">
+       <rect>
+        <x>755</x>
+        <y>660</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_20">
+       <item>
+        <widget class="QPushButton" name="delete_sales_under_date">
+         <property name="text">
+          <string>Удалить</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>535</x>
+        <y>635</y>
+        <width>281</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Удалить заявки, у которых дата меньше заданной</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_16">
+      <property name="geometry">
+       <rect>
+        <x>755</x>
+        <y>790</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_22">
+       <item>
+        <widget class="QPushButton" name="change_button_2">
+         <property name="text">
+          <string>Поменять</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_30">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>695</y>
+        <width>401</width>
+        <height>46</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>В рамках транзакции поменять заданный товар во всех заявках на другой и
+удалить его.</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_20">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>740</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_26">
+       <item>
+        <widget class="QLineEdit" name="lineEdit_id_change"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_44">
+      <property name="geometry">
+       <rect>
+        <x>755</x>
+        <y>740</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_51">
+       <item>
+        <widget class="QLineEdit" name="lineEdit_id_change2"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_31">
+      <property name="geometry">
+       <rect>
+        <x>495</x>
+        <y>755</y>
+        <width>47</width>
+        <height>14</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>id</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_32">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>755</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>поменять на  id</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_45">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>925</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_52"/>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_59">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>575</y>
+        <width>131</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_67">
+       <item>
+        <widget class="QPushButton" name="delete_sale_button_2">
+         <property name="text">
+          <string>Удалить</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_60">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>525</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_68">
+       <item>
+        <widget class="QLineEdit" name="lineEdit_sale_id_delete"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_43">
+      <property name="geometry">
+       <rect>
+        <x>905</x>
+        <y>540</y>
+        <width>47</width>
+        <height>14</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>id заявки</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1576</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
