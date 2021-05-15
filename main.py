@@ -3,7 +3,7 @@ import psycopg2
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from sign_in_controller import sign_inWindow
-from sign_up_controller import sign_upWindow
+
 from user_window_controller import user_Window
 from artist_window_controller import artist_Window
 from connect_sql import Sql
@@ -16,9 +16,9 @@ if __name__ == '__main__':
 
     #window = Admin_Controller()
     #window = sign_upWindow()
-    # window = sign_inWindow()
+    window = sign_inWindow()
 
-    window = user_Window()
+    #window = user_Window()
     # window = artist_Window()
     window.show()
 

@@ -1,12 +1,16 @@
 import psycopg2
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QMessageBox, QHBoxLayout, QLabel
 import filler
 import connect_sql
 from user_info import current_userID as doc_id
 from user_window import Ui_MainWindow as User_window
 import user_info
 import datetime
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
 now = datetime.datetime.now()
 
@@ -25,6 +29,8 @@ class user_Window(QtWidgets.QMainWindow):
         self.ui.add_button.clicked.connect(self.add_button_clicked)
         self.goods_list_change()
         self.sales_list_change()
+        self.w1_list_change()
+        self.w2_list_change()
         self.ui.count1_button.clicked.connect(self.count1)
         self.setInitialValues()
         self.ui.delete_button.clicked.connect(self.delete_good)
@@ -59,10 +65,86 @@ class user_Window(QtWidgets.QMainWindow):
         self.ui.create_xp4_button.clicked.connect(self.create_xp4_button_clicked)
         self.ui.create_xp5_button.clicked.connect(self.create_xp5_button_clicked)
 
+        self.ui.change_sale_button.clicked.connect(self.change_sale_button_clicked)
+
+        self.ui.forecast_button.clicked.connect(self.forecast_button_clicked)
+        self.ui.pushButton_id_sort.clicked.connect(self.pushButton_id_sort_clicked)
+
         self.ui.sales_catalogue_tableWidget.setSortingEnabled(True)
         self.ui.catalogue_tableWidget_2.setSortingEnabled(True)
         self.show()
 
+    def pushButton_id_sort_clicked(self):
+      try:
+        self.db.cursor.execute(
+            "select goods.id,name,w.good_count as warehouse1,w22.good_count as warehouse2,priority from goods left join warehouse1 w on goods.id = w.good_id left join warehouse2 w22 on goods.id = w22.good_id order by goods.id desc")
+        filler.fillTable(self.ui.catalogue_tableWidget_2, self.db.cursor, 5)
+      except (Exception, psycopg2.Error) as error:
+          self.db.cursor.execute("rollback")
+          self.db.cnxn.commit()
+          msg = QMessageBox()
+          msg.setIcon(QMessageBox.Critical)
+          msg.setText('{}'.format(error))
+          msg.setInformativeText('')
+          msg.setWindowTitle("Ошибка")
+          msg.exec_()
+
+    def forecast_button_clicked(self):
+      try:
+        begind = str(self.ui.dateEdit_forecast1.text())
+        endd = str(self.ui.dateEdit_forecast2.text())
+        good_id = self.ui.lineEdit_id.text()
+
+        query = "select * from demand_forecast('" + begind + "' ,'" + endd + "' ,'" + good_id + "' )"
+        outputquery = "COPY ({}) TO STDOUT WITH CSV HEADER".format(query)
+        with open('resultsfile.csv', 'w') as f:
+            self.db.cursor.copy_expert(outputquery, f)
+        fixed_df = pd.read_csv('./resultsfile.csv',
+                               sep=';', encoding='latin1')
+        ax=fixed_df.plot()
+        fig = ax.get_figure()
+        fig.savefig('./result.png')
+        self.db.cursor.execute(query)
+        filler.fillTable(self.ui.sales_catalogue_tableWidget_2, self.db.cursor, 1)
+      except (Exception, psycopg2.Error) as error:
+          self.db.cursor.execute("rollback")
+          self.db.cnxn.commit()
+          msg = QMessageBox()
+          msg.setIcon(QMessageBox.Critical)
+          msg.setText('{}'.format(error))
+          msg.setInformativeText('')
+          msg.setWindowTitle("Ошибка")
+          msg.exec_()
+
+
+    def change_sale_button_clicked(self):
+        try:
+            row = self.ui.sales_catalogue_tableWidget.currentRow()
+            column = self.ui.sales_catalogue_tableWidget.currentColumn()
+            id = str(self.ui.sales_catalogue_tableWidget.item(row, 0).text())
+            good_id = self.ui.lineEdit_id.text()
+            count = self.ui.lineEdit_count.text()
+
+            if count!='':
+                self.db.cursor.execute("update sales set good_count= '" + count + "' where id='" + id + "'")
+            self.db.cnxn.commit()
+
+            if good_id!='':
+                self.db.cursor.execute("update sales set good_id= '" + good_id + "' where id='" + id + "'")
+            self.db.cnxn.commit()
+            self.sales_list_change()
+            self.w1_list_change()
+            self.w2_list_change()
+
+        except (Exception, psycopg2.Error) as error:
+            self.db.cursor.execute("rollback")
+            self.db.cnxn.commit()
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText('{}'.format(error))
+            msg.setInformativeText('У этого товара есть приоритет')
+            msg.setWindowTitle("Ошибка")
+            msg.exec_()
 
     def delete_sale_button_2_clicked(self):
       try:
@@ -70,9 +152,11 @@ class user_Window(QtWidgets.QMainWindow):
         column = self.ui.sales_catalogue_tableWidget.currentColumn()
         id = str(self.ui.sales_catalogue_tableWidget.item(row, 0).text())
         # id=str(self.ui.lineEdit_sale_id_delete.text())
-        self.db.cursor.execute("delete from sales where good_id='" + id + "'")
+        self.db.cursor.execute("delete from sales where id='" + id + "'")
         self.db.cnxn.commit()
         self.sales_list_change()
+        self.w1_list_change()
+        self.w2_list_change()
       except (Exception, psycopg2.Error) as error:
         self.db.cursor.execute("rollback")
         self.db.cnxn.commit()
@@ -87,14 +171,22 @@ class user_Window(QtWidgets.QMainWindow):
 #интервал времени, и выходным параметром – товар, с минимальным числом
 #продаж за заданный период времени.
     def create_xp5_button_clicked(self):
-
+      try:
         date1 = self.ui.dateEdit_count1_3.text()
         date2 = self.ui.dateEdit_count1_4.text()
         self.db.cursor.execute(
             "select * from min_demand('" + str(date1) + "','" + str(date2) + "');" )
         self.db.cnxn.commit()
         filler.fillTable(self.ui.dates_tableWidget_2, self.db.cursor, 1)
-
+      except (Exception, psycopg2.Error) as error:
+          self.db.cursor.execute("rollback")
+          self.db.cnxn.commit()
+          msg = QMessageBox()
+          msg.setIcon(QMessageBox.Critical)
+          msg.setText('{}'.format(error))
+          msg.setInformativeText('')
+          msg.setWindowTitle("Ошибка")
+          msg.exec_()
 
 
 
@@ -104,14 +196,22 @@ class user_Window(QtWidgets.QMainWindow):
 #должна возвращать товар с максимальным приростом спроса
 
     def create_xp4_button_clicked(self):
-
+      try:
         date1 = self.ui.dateEdit_count1_3.text()
         date2 = self.ui.dateEdit_count1_4.text()
         self.db.cursor.execute(
             "select * from max_demand('" + str(date1) + "','" + str(date2) + "');" )
         self.db.cnxn.commit()
         filler.fillTable(self.ui.dates_tableWidget_2, self.db.cursor, 1)
-
+      except (Exception, psycopg2.Error) as error:
+          self.db.cursor.execute("rollback")
+          self.db.cnxn.commit()
+          msg = QMessageBox()
+          msg.setIcon(QMessageBox.Critical)
+          msg.setText('{}'.format(error))
+          msg.setInformativeText('')
+          msg.setWindowTitle("Ошибка")
+          msg.exec_()
 
 #2 Создать хранимую процедуру, имеющую два параметра «товар1» и
 #«товар2». Она должна возвращать даты, спрос в которые на «товар1» был
@@ -119,36 +219,64 @@ class user_Window(QtWidgets.QMainWindow):
 #продавался, такой день не рассматривается
 
     def create_xp3_button_clicked(self):
+      try:
         id1 = str(self.ui.id1_lineEdit.text())
         id2 = str(self.ui.id2_lineEdit.text())
         self.db.cursor.execute("select * from demand('" + id1 + "','" + id2 + "')")
         self.db.cnxn.commit()
         filler.fillTable(self.ui.dates_tableWidget, self.db.cursor, 1)
-
+      except (Exception, psycopg2.Error) as error:
+          self.db.cursor.execute("rollback")
+          self.db.cnxn.commit()
+          msg = QMessageBox()
+          msg.setIcon(QMessageBox.Critical)
+          msg.setText('{}'.format(error))
+          msg.setInformativeText('')
+          msg.setWindowTitle("Ошибка")
+          msg.exec_()
 
 #1 Создать хранимую процедуру с параметром количество перевозимого
 #товара за ближайший рейс и выводящую все товары, которые необходимо
 #привезти, и их количество
     def create_xp2_button_clicked(self):
+      try:
         count = str(self.ui.delivery_lineEdit.text())
         self.db.cursor.execute("select * from delivery_from_2_to_1();select * from delivery_from_2_to_1_with_quant(%s)", [count])
         self.db.cnxn.commit()
         filler.fillTable(self.ui.catalogue_tableWidget_2, self.db.cursor, 6)
-
+      except (Exception, psycopg2.Error) as error:
+          self.db.cursor.execute("rollback")
+          self.db.cnxn.commit()
+          msg = QMessageBox()
+          msg.setIcon(QMessageBox.Critical)
+          msg.setText('{}'.format(error))
+          msg.setInformativeText('')
+          msg.setWindowTitle("Ошибка")
+          msg.exec_()
 
 
 #1 Создать хранимую процедуру, выводящую список товаров для перевоза и
 #его количество согласно текущему состоянию приоритетов
 
     def create_xp1_button_clicked(self):
+      try:
         self.db.cursor.execute("select * from delivery_from_2_to_1()")
         self.db.cnxn.commit()
         filler.fillTable(self.ui.catalogue_tableWidget_2, self.db.cursor, 6)
-
+      except (Exception, psycopg2.Error) as error:
+          self.db.cursor.execute("rollback")
+          self.db.cnxn.commit()
+          msg = QMessageBox()
+          msg.setIcon(QMessageBox.Critical)
+          msg.setText('{}'.format(error))
+          msg.setInformativeText('')
+          msg.setWindowTitle("Ошибка")
+          msg.exec_()
 #2 Создать представление, отображающее 5 самых популярных товаров за заданный
 #месяц
 
     def create_view_button_2_clicked(self):
+      try:
         date = str(self.ui.dateEdit_view.text())
         date1=date.split('.')
         date2=str(date1[2]+'-'+date1[1]+'-%');
@@ -156,15 +284,32 @@ class user_Window(QtWidgets.QMainWindow):
             "select goods.id,name,w.good_count as warehouse1,w22.good_count as warehouse2,count(s.good_id ) as count from goods left join warehouse1 w on goods.id = w.good_id left join warehouse2 w22 on goods.id = w22.good_id join sales s on goods.id = s.good_id where create_date::text like '" + date2 + "' group by goods.id, name , warehouse1,warehouse2 order by count desc limit 5;")
         self.db.cnxn.commit()
         filler.fillTable(self.ui.catalogue_tableWidget_2, self.db.cursor, 5)
-
+      except (Exception, psycopg2.Error) as error:
+          self.db.cursor.execute("rollback")
+          self.db.cnxn.commit()
+          msg = QMessageBox()
+          msg.setIcon(QMessageBox.Critical)
+          msg.setText('{}'.format(error))
+          msg.setInformativeText('')
+          msg.setWindowTitle("Ошибка")
+          msg.exec_()
     #1 Создать представление, отображающее все товары, число которых на складе1
 #менее некоторого числа
     def create_view_button_clicked(self):
+      try:
         count = self.ui.view_lineEdit.text()
         self.db.cursor.execute("select goods.id,name,w.good_count as warehouse1,w22.good_count as warehouse2,priority from goods left join warehouse1 w on goods.id = w.good_id left join warehouse2 w22 on goods.id = w22.good_id where w.good_count<'" + count + "'")
         self.db.cnxn.commit()
         filler.fillTable(self.ui.catalogue_tableWidget_2, self.db.cursor, 5)
-
+      except (Exception, psycopg2.Error) as error:
+          self.db.cursor.execute("rollback")
+          self.db.cnxn.commit()
+          msg = QMessageBox()
+          msg.setIcon(QMessageBox.Critical)
+          msg.setText('{}'.format(error))
+          msg.setInformativeText('')
+          msg.setWindowTitle("Ошибка")
+          msg.exec_()
 
 
 #модификация в рамках транзакции
@@ -186,6 +331,8 @@ class user_Window(QtWidgets.QMainWindow):
         self.db.cnxn.commit()
         self.goods_list_change()
         self.sales_list_change()
+        self.w1_list_change()
+        self.w2_list_change()
       except (Exception, psycopg2.Error) as error:
         self.db.cursor.execute("rollback")
         self.db.cnxn.commit()
@@ -200,14 +347,26 @@ class user_Window(QtWidgets.QMainWindow):
 #на этом складе меньше 5, не достающее число списать со второго склада
 
     def delete_5_goods_button_2_clicked(self):
+      try:
         id = int(str(self.ui.delete_5_goods_lineEdit_2.text()))
         self.db.cursor.execute("call proc2(%s)", ([id]))
         self.db.cnxn.commit()
         self.goods_list_change()
+        self.w1_list_change()
+        self.w2_list_change()
+      except (Exception, psycopg2.Error) as error:
+          self.db.cursor.execute("rollback")
+          self.db.cnxn.commit()
+          msg = QMessageBox()
+          msg.setIcon(QMessageBox.Critical)
+          msg.setText('{}'.format(error))
+          msg.setInformativeText('')
+          msg.setWindowTitle("Ошибка")
+          msg.exec_()
 
 #Списать 5 единиц заданного товара со «склада 1»
     def delete_5_goods_button_clicked(self):
-
+      try:
         id=str(self.ui.delete_5_goods_lineEdit.text())
         self.db.cursor.execute(
             "select good_count from warehouse1 where good_id='" + id + "' ")
@@ -219,7 +378,17 @@ class user_Window(QtWidgets.QMainWindow):
             self.db.cursor.execute("call proc2(%s)", ([id]))
         self.db.cnxn.commit()
         self.goods_list_change()
-
+        self.w1_list_change()
+        self.w2_list_change()
+      except (Exception, psycopg2.Error) as error:
+          self.db.cursor.execute("rollback")
+          self.db.cnxn.commit()
+          msg = QMessageBox()
+          msg.setIcon(QMessageBox.Critical)
+          msg.setText('{}'.format(error))
+          msg.setInformativeText('')
+          msg.setWindowTitle("Ошибка")
+          msg.exec_()
 
 #1 Изменить количество товаров с заданным наименованием
     def change_button_clicked(self):
@@ -238,7 +407,9 @@ class user_Window(QtWidgets.QMainWindow):
 
              self.db.cnxn.commit()
              self.goods_list_change()
-
+             self.w1_list_change()
+             self.w2_list_change()
+            self.ui.id_lineEdit.setText("")
           except (Exception, psycopg2.Error) as error:
               self.db.cursor.execute("rollback")
               self.db.cnxn.commit()
@@ -255,6 +426,9 @@ class user_Window(QtWidgets.QMainWindow):
                 "update goods set name='" + good_name + "'where id='" + id + "' ")
                 self.db.cnxn.commit()
                 self.goods_list_change()
+                self.w1_list_change()
+                self.w2_list_change()
+                self.ui.good_name_lineEdit.setText("")
             except (Exception, psycopg2.Error) as error:
                 self.db.cursor.execute("rollback")
                 self.db.cnxn.commit()
@@ -274,9 +448,12 @@ class user_Window(QtWidgets.QMainWindow):
                     "insert into warehouse1(good_id, good_count) values ('" + id + "','" + w1 + "')")
               else:
                  self.db.cursor.execute(
-                "update warehouse1 set good_count='" + w1 + "'where id='" + id + "' ")
+                "update warehouse1 set good_count='" + w1 + "'where good_id='" + id + "' ")
               self.db.cnxn.commit()
               self.goods_list_change()
+              self.w1_list_change()
+              self.w2_list_change()
+              self.ui.w1_lineEdit.setText("")
             except (Exception, psycopg2.Error) as error:
                 self.db.cursor.execute("rollback")
                 self.db.cnxn.commit()
@@ -287,16 +464,20 @@ class user_Window(QtWidgets.QMainWindow):
                 msg.setWindowTitle("Ошибка")
                 msg.exec_()
         elif column==3:
-            w2 = str(self.ui.w1_lineEdit.text())
+            w2 = str(self.ui.w2_lineEdit.text())
             try:
              if text == "None":
                 self.db.cursor.execute(
                     "insert into warehouse2(good_id, good_count) values ('" + id + "','" + w2 + "')")
              else:
                 self.db.cursor.execute(
-                    "update warehouse2 set good_count='" + w2 + "'where id='" + id + "' ")
+                    "update warehouse2 set good_count='" + w2 + "'where good_id='" + id + "' ")
              self.db.cnxn.commit()
              self.goods_list_change()
+             self.w1_list_change()
+             self.w2_list_change()
+             self.ui.w1_lineEdit.setText("")
+             self.ui.w2_lineEdit.setText("")
             except (Exception, psycopg2.Error) as error:
                 self.db.cursor.execute("rollback")
                 self.db.cnxn.commit()
@@ -313,6 +494,9 @@ class user_Window(QtWidgets.QMainWindow):
                 "update goods set priority='" + priority + "'where id='" + id + "' ")
              self.db.cnxn.commit()
              self.goods_list_change()
+             self.w1_list_change()
+             self.w2_list_change()
+             self.ui.priority_lineEdit.setText("")
             except (Exception, psycopg2.Error) as error:
                 self.db.cursor.execute("rollback")
                 self.db.cnxn.commit()
@@ -329,9 +513,21 @@ class user_Window(QtWidgets.QMainWindow):
 
 #1 Удалить в рамках транзакции товар со «склада 1» с наименьшим приоритетом
     def delete_good_with_min_prior_clicked(self):
-        self.db.cursor.execute("call proc1()")
-        self.db.cnxn.commit()
-        self.goods_list_change()
+        try:
+            self.db.cursor.execute("call proc1()")
+            self.db.cnxn.commit()
+            self.goods_list_change()
+            self.w1_list_change()
+            self.w2_list_change()
+        except (Exception, psycopg2.Error) as error:
+            self.db.cursor.execute("rollback")
+            self.db.cnxn.commit()
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText('{}'.format(error))
+            msg.setInformativeText('Количество этого товара на складах меньше 10')
+            msg.setWindowTitle("Ошибка")
+            msg.exec_()
 
 # 3 Удалить товар и заявки на него
     def delete_good_and_its_sales_clicked(self):
@@ -346,6 +542,8 @@ class user_Window(QtWidgets.QMainWindow):
             self.db.cnxn.commit()
             self.goods_list_change()
             self.sales_list_change()
+            self.w1_list_change()
+            self.w2_list_change()
 
         except (Exception, psycopg2.Error) as error:
             self.db.cursor.execute("rollback")
@@ -363,6 +561,8 @@ class user_Window(QtWidgets.QMainWindow):
             "delete from goods where id not in (select good_id from sales) and priority=0")
         self.db.cnxn.commit()
         self.goods_list_change()
+        self.w1_list_change()
+        self.w2_list_change()
 
 #1 Удалить заявки, у которых дата меньше заданной
     def delete_sales_under_date_clicked(self):
@@ -372,6 +572,8 @@ class user_Window(QtWidgets.QMainWindow):
                 "delete from sales where good_id in (select id from goods where priority=0) and create_date<'"+str(date1)+"'")
         self.db.cnxn.commit()
         self.sales_list_change()
+        self.w1_list_change()
+        self.w2_list_change()
 
 #2 Добавить заявку на товар из п1
     def add_sale_button_clicked(self):
@@ -382,6 +584,8 @@ class user_Window(QtWidgets.QMainWindow):
                                (id, datetime.datetime.today().strftime('%Y-%m-%d'), count))
         self.db.cnxn.commit()
         self.sales_list_change()
+        self.w1_list_change()
+        self.w2_list_change()
        except (Exception, psycopg2.Error) as error:
            self.db.cursor.execute("rollback")
            self.db.cnxn.commit()
@@ -460,12 +664,13 @@ class user_Window(QtWidgets.QMainWindow):
 
     def sales_list_change(self):
         self.db.cursor.execute(
-            "select sales.id,g.name,good_id,good_count,priority,create_date from sales join goods g on g.id = sales.good_id ")
+            "select sales.id,g.name,good_id,good_count,priority,create_date from sales join goods g on g.id = sales.good_id order by sales.id desc")
         self.db.cnxn.commit()
         filler.fillTable(self.ui.sales_catalogue_tableWidget, self.db.cursor, 6)
 
     def setInitialValues(self):
-        self.db.cursor.execute("SELECT users.name from users where id=" + str(user_info.current_userID))
+        self.db.cursor.execute("SELECT login from users_wholesale where id=" + str(user_info.current_userID))
+
         name = self.db.cursor.fetchone()
 
     def delete_good(self):
@@ -491,6 +696,8 @@ class user_Window(QtWidgets.QMainWindow):
                 print("wtf?")
             self.db.cnxn.commit()
             self.goods_list_change()
+            self.w1_list_change()
+            self.w2_list_change()
         except (Exception, psycopg2.Error) as error:
             self.db.cursor.execute("rollback")
             self.db.cnxn.commit()
@@ -504,42 +711,59 @@ class user_Window(QtWidgets.QMainWindow):
 
     def add_button_clicked(self):
         new_name = str(self.ui.good_name_lineEdit.text())
+        e=""
         if not (new_name.isalnum()) and len(new_name) < 3:
             error_message = QtWidgets.QErrorMessage(self)
             error_message.setWindowTitle("Некорректный ввод")
             error_message.showMessage('Введите другое наименование')
         else:
             good_name = new_name
-            w1 = int(str(self.ui.w1_lineEdit.text()))
-            w2 = int(str(self.ui.w2_lineEdit.text()))
-            priority = str(self.ui.priority_lineEdit.text())
-            id = int(str(self.ui.id_lineEdit.text()))
+
+            #id = int(str(self.ui.id_lineEdit.text()))
             try:
+                w1 = str(self.ui.w1_lineEdit.text())
+                w2 = str(self.ui.w2_lineEdit.text())
+                if w1=='' or w2=='':
+                    e="Добавьте товары на склады"
+                else:
+                    w1=int(w1)
+                    w2 = int(w2)
+
+                priority = str(self.ui.priority_lineEdit.text())
+                self.db.cursor.execute("select name from goods where name='"+str(good_name)+"'")
+                s = self.db.cursor.fetchone()
+                if s:
+                    e="Товар с таким наименованием уже существует"
+
                 if priority != '':
-                    # self.db.cursor.call("proc",(id, good_name, priority, w1, w2))
-                    self.db.cursor.execute("call proc(%s,%s,%s,%s,%s);", (id, good_name, priority, w1, w2))
+                    self.db.cursor.execute("call proc(%s,%s,%s,%s);", (good_name, priority, w1, w2))
 
                 else:
                     # self.db.cursor.callproc(" call proc", (id, good_name, w1, w2))
-                    self.db.cursor.execute("call proc(%s,%s,%s,%s,%s)", (id, good_name,0.0, w1, w2))
+                    self.db.cursor.execute("call proc(%s,%s,%s,%s)", (good_name,0.0, w1, w2))
 
                 self.db.cnxn.commit()
                 self.goods_list_change()
+                self.w1_list_change()
+                self.w2_list_change()
+                self.ui.good_name_lineEdit.setText("")
+                self.ui.w1_lineEdit.setText("")
+                self.ui.w2_lineEdit.setText("")
 
-                print("smth happened")
             except (Exception, psycopg2.Error) as error:
                 self.db.cursor.execute("rollback")
                 self.db.cnxn.commit()
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Critical)
                 msg.setText('{}'.format(error))
-                #msg.setInformativeText(error)
+
+                msg.setInformativeText(e)
                 msg.setWindowTitle("Ошибка")
                 msg.exec_()
 
     def goods_list_change(self):
         self.db.cursor.execute(
-            "select goods.id,name,w.good_count as warehouse1,w22.good_count as warehouse2,priority from goods left join warehouse1 w on goods.id = w.good_id left join warehouse2 w22 on goods.id = w22.good_id ")
+            "select goods.id,name,w.good_count as warehouse1,w22.good_count as warehouse2,priority from goods left join warehouse1 w on goods.id = w.good_id left join warehouse2 w22 on goods.id = w22.good_id order by goods.id desc")
         filler.fillTable(self.ui.catalogue_tableWidget_2, self.db.cursor, 5)
 
     def show_all_goods(self) :
@@ -550,6 +774,16 @@ class user_Window(QtWidgets.QMainWindow):
         ganre=str(self.ui.ganre_comboBox.currentText())
         self.db.cursor.execute("SELECT songs.name as songs_name, songs.price,songs.upload_date,ganres.name as ganre_name,users.name as artist_name from ((songs inner join ganres on songs.ganre_id = ganres.ganre_id) inner join users on songs.user_id = users.user_id )")
         filler.fillTable(self.ui.songs_catalogue_tableWidget, self.db.cursor, 5)
+
+    def w1_list_change(self):
+        self.db.cursor.execute(
+            "select warehouse1.id,g.name,g.id,good_count from warehouse1 join goods g on g.id=warehouse1.good_id")
+        filler.fillTable(self.ui.w1_catalogue_tableWidget, self.db.cursor, 4)
+
+    def w2_list_change(self):
+        self.db.cursor.execute(
+            "select warehouse2.id,g.name,g.id,good_count from warehouse2 join goods g on g.id=warehouse2.good_id")
+        filler.fillTable(self.ui.w2_catalogue_tableWidget, self.db.cursor, 4)
 
 
     def exit_button_clicked(self):
